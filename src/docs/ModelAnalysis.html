@@ -1,0 +1,89 @@
+﻿<html>
+	
+<head>
+	<title>Model Analysis</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 3.9.1.648">
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "OpenLDM.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("ModelAnalysis");
+			}
+		});
+	</script>
+</head>
+
+<body>
+
+	<div id="topic_header">
+			<div id="topic_header_content">
+				<h1>Model Analysis</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="GUI.html">GUI</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="GUI.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="DriversSelectionT0.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="DataSelectionT1.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps25"><span class="rvts8">This tab provides the summary of the coefficients and its significance as estimated in the previous steps. Here we can add or remove the model coefficients as per user analysis. The selected drivers will be used for modeling purpose based on Akaike’s An Information Criteria (AIC) scores of model. The has two subsections</span></p>
+<h2 class="rvps17"><span class="rvts0"><span class="rvts8"><br/></span></span></h2>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside;"><ol style="text-indent: 0px; margin-left: 29px; list-style-position: outside;">
+<li class="rvps19" style="margin-left: 0; text-indent: 0px"><a name="_Toc379806778"></a>
+<span class="rvts0"><span class="rvts31">View Model Coefficient</span></span></li>
+</ol></ol>
+<p class="rvps23"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">This section allows selection of individual drivers for a specific class .User can do the selection of each driver based on observation of the significance level of each driver related to a particular class. These coefficients are used for the generation of suitability maps for each class. </span></p>
+<p class="rvps23"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">We can also label DN numbers in the input LULC file as per the user's choice.</span></p>
+<h2 class="rvps24"><span class="rvts0"><span class="rvts8"><br/></span></span></h2>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside;"><ol style="text-indent: 0px; margin-left: 29px; list-style-position: outside;"  start="2;">
+<li class="rvps19" style="margin-left: 0; text-indent: 0px"><a name="_Toc379806779"></a>
+<span class="rvts0"><span class="rvts31">Migration Order</span></span></li>
+</ol></ol>
+<p class="rvps23"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Under this section user can set the priorities of classes to be considered in case of two or more classes contribute to a particular class during the duration between T0 and T1 time.It has two option “</span><span class="rvts7">Auto</span><span class="rvts8">” and “</span><span class="rvts7">User Defined</span><span class="rvts8">”. Under “Auto” selection the transition probability is used to set the order. The “User Defined” mode requires the order to be given in positive integer values starting from 1,2,…n. The smaller the value the earlier the selection of that class will be for the allocation to meet the demand </span></p>
+<h2 class="rvps24"><span class="rvts0"><span class="rvts8"><br/></span></span></h2>
+<h2 class="rvps22"><a name="_topic_DataSelectionT1"></a>
+<img width="567" height="436" alt="" style="padding : 1px;" src="lib/NewItem13.png"/></h2>
+<p class="rvps10"><span class="rvts22">Figure 5</span></p>
+<p></p>
+<p class="rvps4"><span class="rvts10">(OpenLDM) v1.0 </span><a class="rvts11" href="http://www.iirs.gov.in/">IIRS</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; IIRS  by Ashutosh Kumar Jha. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

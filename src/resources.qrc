@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="images">
+    <file>images/Allinone.jpeg</file>
+    <file>images/Allinone.png</file>
+    <file>images/icon.png</file>
+    <file>images/images1.jpeg</file>
+    <file>images/images1.png</file>
+  </qresource>
+</RCC>

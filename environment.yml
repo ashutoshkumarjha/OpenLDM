@@ -1,0 +1,16 @@
+name: OpenLDM
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+dependencies:
+  - ca-certificates
+  - python
+  - readline
+  - r-base
+  - r-rgdal
+  - gdal
+  - pyqt 
+  - pip
+  - pip:
+    - rpy2

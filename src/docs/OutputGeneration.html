@@ -1,0 +1,92 @@
+﻿<html>
+	
+<head>
+	<title>Output Generation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 3.9.1.648">
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "OpenLDM.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("OutputGeneration");
+			}
+		});
+	</script>
+</head>
+
+<body>
+
+	<div id="topic_header">
+			<div id="topic_header_content">
+				<h1>Output Generation</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="GUI.html">GUI</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="GUI.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="DataSelectionT1.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="AccuracyAssesment.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps25"><span class="rvts8">This section allows the inclusion of policy of land use by planner and enable cellular automata engine before model execution. It has following subsections. </span></p>
+<p class="rvps25"><span class="rvts8"><br/></span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside;"><ol style="text-indent: 0px; margin-left: 29px; list-style-position: outside;">
+<li class="rvps19" style="margin-left: 0; text-indent: 0px"><a name="_Toc379806782"></a>
+<span class="rvts0"><span class="rvts31">Policies</span></span></li>
+</ol></ol>
+<p class="rvps23"><span class="rvts8">The policy inclusion includes defining 1) the retention capability of each of LULC class (i.e. class inertia) and 2) expected demand of LULC class in term of pixels. By default these are estimated from the transition probability matrix. </span></p>
+<p class="rvps23"><span class="rvts8">This section has provision of inclusion of retention capability of LULC classes in the range of 0-1.0.The value of 1.0 denotes high inertial/retention and zero denotes low inertia/retention. In other words if a value of 1.0 is assigned against LULC classes (under “</span><span class="rvts7">Class</span><span class="rvts8">” column heading) in row corresponding to class in “</span><span class="rvts7">Class Inertia</span><span class="rvts8">” column will result in class migration to be disabled. Similarly 0 in the fields means the classes can migrate to other new location. The values in between will result in few of the pixel to be in same grid while the reaming to be free to move anywhere in the lattice. In </span><span class="rvts19">Figure 7</span><span class="rvts8"> the class inertia is set to 1 for Built-up class.</span></p>
+<p class="rvps23"><span class="rvts8">The LULC modeling can also be modeled based on the future scenario of LULC class wise demand. Planner can enter the class wise future demand in number of pixels under “</span><span class="rvts7">Demand</span><span class="rvts8">” heading of LULC class against each LULC classes.</span></p>
+<p class="rvps23"><span class="rvts8">The above mentioned options will be enabled on the basis of enabling of these features by selecting “</span><span class="rvts7">User Defined Demand</span><span class="rvts8">” and “</span><span class="rvts7">User Defined Class Inertia</span><span class="rvts8">” checkbox.</span></p>
+<p class="rvps23"><span class="rvts8"><br/></span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside;"><ol style="text-indent: 0px; margin-left: 29px; list-style-position: outside;" start="2;">
+<li class="rvps19" style="margin-left: 0; text-indent: 0px"><a name="_Toc379806783"></a>
+<span class="rvts0"><span class="rvts31">Spatial Context </span></span></li>
+</ol></ol>
+<p class="rvps23"><span class="rvts8">This subsection has a provision to include neighboring distribution of particular class to be included in suitability map generation. To consider the weight “</span><span class="rvts7">Window size</span><span class="rvts8">” is set. This has iterative nature so the number of steps size of this iteration can be set by setting “Steps required” combo. The steps output generated in each iteration of time interval can also be generated if the user wants the output to be saved.</span></p>
+<p class="rvps27"><span class="rvts8"><br/></span></p>
+<p class="rvps27"><span class="rvts8">After setting above the two subsection output can be generated by executing the “</span><span class="rvts7">Execute Button</span><span class="rvts8">”</span></p>
+<h2 class="rvps22"><img width="629" height="495" alt="" style="padding : 1px;" src="lib/NewItem15.png"/></h2>
+<p class="rvps10"><a name="_Ref379803830"></a>
+<span class="rvts22">Figure </span><span class="rvts24">5</span></p>
+<p></p>
+<p class="rvps4"><span class="rvts10">(OpenLDM) v1.0 </span><a class="rvts11" href="http://www.iirs.gov.in/">IIRS</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; IIRS  by Ashutosh Kumar Jha. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

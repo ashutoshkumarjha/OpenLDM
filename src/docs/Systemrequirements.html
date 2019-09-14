@@ -1,0 +1,98 @@
+﻿<html>
+	
+<head>
+	<title>System requirements</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Personal Edition 3.9.1.648">
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "OpenLDM.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Systemrequirements");
+			}
+		});
+	</script>
+</head>
+
+<body>
+
+	<div id="topic_header">
+			<div id="topic_header_content">
+				<h1>System requirements</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="GettingStarted.html">Getting Started</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="GettingStarted.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="GettingStarted.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Systemsetup.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps2"><span class="rvts6"> </span><span class="rvts8">This software can be run on any platform which is capable of running the R and Python. The system hardware requirement is completely dependent upon data volume. The software has dependencies on R for command based version. For GUI version it has dependencies on Python and/or QGIS depending upon you use GUI/QGIS Plug-in. </span></p>
+<p class="rvps2"><span class="rvts8">Please install all the dependencies as given below depending upon the OS.</span></p>
+<p class="rvps2"><span class="rvts8">For Windows*</span></p>
+<p class="rvps6"><span class="rvts8">Step 1. Installing R and its libraries. </span></p>
+<p class="rvps7"><span class="rvts8">1.1.1 &nbsp;Go to </span><a class="rvts9" href="http://cran.r-project.org/bin/windows/base/">R official</a><span class="rvts8"> site and download the latest version of R. e.g. </span><a class="rvts9" href="http://cran.r-project.org/bin/windows/base/R-3.0.2-win.exe">R-3.0.2-win</a><span class="rvts8">.</span></p>
+<p class="rvps8"><span class="rvts8">Note: &nbsp;It is always better to choose slightly earlier version to avoid lack of libraries for the current version. While R may be latest but the library may be under development. The older version can be found at </span><a class="rvts15" href="http://cran.r-project.org/bin/windows/base/old">http://cran.r-project.org/bin/windows/base/old</a><span class="rvts8">. Click on </span><a class="rvts9" href="http://cran.r-project.org/bin/windows/base/old/3.0.1/R-3.0.1-win.exe">R- 3.0.1</a><span class="rvts8"> to download the file.</span></p>
+<p class="rvps6"><span class="rvts8"> &nbsp; &nbsp; &nbsp;1.1.2 After installing the R, invoke the R and install the libraries </span><span class="rvts16">('png', 'grid' ,'raster' ,'maptools' ,'rgeos' ,'rgdal' ,'parallel' ,'doParallel' ,'nnet' ,'data.table')</span><span class="rvts8"> by copying and pasting following command on R prompt.</span></p>
+<p class="rvps6"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">&gt; </span><span class="rvts16">install.packages(‘packageName’)</span></p>
+<p class="rvps6"><span class="rvts8"><br/></span></p>
+<p class="rvps6"><span class="rvts8">Step 2. Click on the installer and follow the instruction to install the Program. Next step is required only incase where you want to perform the development.</span></p>
+<p class="rvps6"><span class="rvts8"><br/></span></p>
+<p class="rvps6"><span class="rvts8">Step 3.To be followed for GUI. Please install python and associated libraries as given below.Click the link to download the file directly.</span></p>
+<p class="rvps7"><span class="rvts8">2.1 Python 2.7 for </span><a class="rvts9" href="http://www.python.org/ftp/python/2.7.6/python-2.7.6.msi">python2.7-32bit</a><span class="rvts8"> or </span><a class="rvts9" href="http://www.python.org/ftp/python/2.7.6/python-2.7.6.amd64.msi">python2.7-64bit</a><span class="rvts8"> depending upon your OS.</span></p>
+<p class="rvps7"><span class="rvts8">2.2 rpy2 for python 2.7 for </span><a class="rvts9" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/2hfo3ysu/rpy2-2.3.9.win32-py2.7.exe">rpy2-32bit</a><span class="rvts8"> or </span><a class="rvts9" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/2hfo3ysu/rpy2-2.3.9.win-amd64-py2.7.exe">rpy2-64bit</a><span class="rvts8"> depending upon your python version.Rpy2 version installer can be found </span><a class="rvts9" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2">here.</a></p>
+<p class="rvps7"><span class="rvts8">2.3 pywin32 for python 2.7 for </span><a class="rvts9" href="http://sourceforge.net/projects/pywin32/files/pywin32/Build 217/pywin32-217.win32-py2.7.exe/download">pywin32-32bit</a><span class="rvts8"> or </span><a class="rvts9" href="http://sourceforge.net/projects/pywin32/files/pywin32/Build 217/pywin32-217.win-amd64-py2.7.exe/download">pywin32-64bit</a><span class="rvts8"> depending upon your python version.</span></p>
+<p class="rvps7"><span class="rvts8">2.4 PyQt4 for python 2.7 for</span><a class="rvts9" href="http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt4-4.10.3-gpl-Py2.7-Qt4.8.5-x32.exe"> PyQt4-32bit</a><span class="rvts8"> or </span><a class="rvts9" href="http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.10.3/PyQt4-4.10.3-gpl-Py2.7-Qt4.8.5-x64.exe">PyQt4-64bit</a><span class="rvts8"> depending upon your python version.</span></p>
+<p class="rvps6"><span class="rvts8">*Required only for development version. </span></p>
+<p class="rvps2"><span class="rvts6">+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span></p>
+<p class="rvps2"><span class="rvts8">On Ubuntu Linux use following command</span></p>
+<p class="rvps2"><span class="rvts8">Step 1. Installing R and its libraries use the following command.</span></p>
+<p class="rvps2"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">2.1.1 #sudo apt-get install r-base &nbsp; </span></p>
+<p class="rvps2"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">For setting the repository follow the instruction </span><a class="rvts9" href="http://cran.r-project.org/bin/linux/ubuntu/README">here</a><span class="rvts8">.</span></p>
+<p class="rvps2"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">2.1.2 After installing the R invoke the R and install the following a few libraies by copying and pasting following command on R prompt.</span></p>
+<p class="rvps6"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">&gt; install.packages('png','grid','raster','maptools','rgeos','rgdal','parallel','doParallel','nnet','data.table')</span></p>
+<p class="rvps6"><span class="rvts8"><br/></span></p>
+<p class="rvps2"><span class="rvts8">Step 2.To be followed for GUI. Please install python and associated libraries as given below.</span></p>
+<p class="rvps2"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">2.2.1 #sudo apt-get install python-rpy2</span></p>
+<p></p>
+<p class="rvps4"><span class="rvts10">(OpenLDM) v1.0 </span><a class="rvts11" href="http://www.iirs.gov.in/">IIRS</a></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright &copy; IIRS  by Ashutosh Kumar Jha. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+
