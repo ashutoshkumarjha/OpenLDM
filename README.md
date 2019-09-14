@@ -32,7 +32,7 @@ For command line change the runSteps1a.R based on the new data sets and modeling
    cd src
    python runLULCgui5.py 
  ```
-Just follow the GUI. For any help please brows help section.
+Just follow the GUI. For any help please browse help section.
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
@@ -42,4 +42,4 @@ Please make sure to update tests as appropriate.
 * Ashutosh Kumar Jha 
  
 ## License
-[MIT](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[GPL](https://www.gnu.org/licenses/gpl-3.0.en.html)
