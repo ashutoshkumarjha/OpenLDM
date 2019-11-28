@@ -60,12 +60,12 @@ myallocationorder=NA
 #mydemand=NA
 #neighbourl=NA
 myallocationorder<-c(1,3,4,5,9,6,7,8,2)
-#model.type=c('logistic','logistic','logistic','logistic','logistic','logistic','logistic','logistic','logistic')
+model.type=c('logistic','logistic','logistic','logistic','logistic','logistic','logistic','logistic','logistic')
 #model.type=c('randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','randomForest')
 #model.type=c('regression','regression','regression','regression','regression','regression','regression','regression','regression')
 #model.type=c('nnet','nnet','nnet','nnet','nnet','nnet','nnet','nnet','nnet')
-model.type=c('randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','logistic','randomForest','logistic')
-
+#model.type=c('randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','logistic','randomForest','logistic')
+modelType='logistics'
 ###############
 model.formula=c("T1.BuildUp ~ TD1.DistanceToDrainage+TD1.DistanceToBuiltup+TD1.DistanceToRoad+TD1.Elevation",
                   "T1.Agriculture ~ TD1.DistanceToDrainage+TD1.DistanceToBuiltup+TD1.DistanceToRoad+TD1.Elevation",
@@ -93,7 +93,7 @@ myconversion<-matrix(
   ,nrow=length(myallocationorder),byrow=TRUE)
 myconversion='TP'
 
-getModelFitSummary(T1File,T2File,T1drivers,modelType='randomForest',withNAvalue=na.value,method="NotIncludeCurrentClass")
+getModelFitSummary(T1File,T2File,T1drivers,modelType=model.type,withNAvalue=na.value,method="NotIncludeCurrentClass")
 ####nw<-ParallelComputeNearByWeight(T2File,withNA=na.value)
 ####createNeighbourMap(nw,T2File,suitabilityDirectory,clsName)
 #plot(stack(paste(rep(suitabilityDirectory,length(clsName)),paste(clsName,"NW.tif",sep=""),sep="")))
@@ -128,30 +128,30 @@ getKappaSummary(T3File,PredictedFile,na.value,clsName)
 #s<-stack("../examples/outputdata/senario-4-neigh-allocorder-124596783-randomForest-2005.tif","../examples/outputdata/senario-4-neigh-allocorder-134596782-randomForest-2005.tif")
 
 #s<-stack("../examples/outputdata/senario-4-neigh-randomForest-2005.tif","../examples/outputdata/Senario-3.tif") 
-s<-stack(T3File,PredictedFile)
-
-#plot(s)
-r2<-s[[1]]*10+s[[2]]
-table(r2[])
-r3<-r2
-r3[r2[]==11]=0
-r3[r2[]==22]=0
-r3[r2[]==33]=0
-r3[r2[]==44]=0
-r3[r2[]==55]=0
-r3[r2[]==66]=0
-r3[r2[]==77]=0
-r3[r2[]==88]=0
-r3[r2[]==99]=0
-r4<-r3
-r4[r3[]>=11 & r3[]<=19]=1
-r4[r3[]>=21 & r3[]<=29]=2
-r4[r3[]>=31 & r3[]<=39]=3
-r4[r3[]>=41 & r3[]<=49]=4
-r4[r3[]>=51 & r3[]<=59]=5
-r4[r3[]>=61 & r3[]<=69]=6
-r4[r3[]>=71 & r3[]<=79]=7
-r4[r3[]>=81 & r3[]<=89]=8
-r4[r3[]>=91 & r3[]<=99]=9
-plot(stack(s,r3,r4))
+# s<-stack(T3File,PredictedFile)
+# 
+# #plot(s)
+# r2<-s[[1]]*10+s[[2]]
+# table(r2[])
+# r3<-r2
+# r3[r2[]==11]=0
+# r3[r2[]==22]=0
+# r3[r2[]==33]=0
+# r3[r2[]==44]=0
+# r3[r2[]==55]=0
+# r3[r2[]==66]=0
+# r3[r2[]==77]=0
+# r3[r2[]==88]=0
+# r3[r2[]==99]=0
+# r4<-r3
+# r4[r3[]>=11 & r3[]<=19]=1
+# r4[r3[]>=21 & r3[]<=29]=2
+# r4[r3[]>=31 & r3[]<=39]=3
+# r4[r3[]>=41 & r3[]<=49]=4
+# r4[r3[]>=51 & r3[]<=59]=5
+# r4[r3[]>=61 & r3[]<=69]=6
+# r4[r3[]>=71 & r3[]<=79]=7
+# r4[r3[]>=81 & r3[]<=89]=8
+# r4[r3[]>=91 & r3[]<=99]=9
+# plot(stack(s,r3,r4))
 # 

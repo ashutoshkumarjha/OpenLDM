@@ -253,7 +253,7 @@ constructSuitablity<-function(model,driverForWhichToPredict,dt2=NA,method="NotIn
             suitablity[[i]]<-as.data.table(cbind(drvWithId[,c("id"),with=F],weight=predict(model[[i]],data=drvWithId,type='response', progress='text')))[order(weight,decreasing = TRUE)]
         }else if(is.element(model.class[1],"glm")) {
             print("OK GLM")
-            suitablity[[i]]<-as.data.table(cbind(ddrvWithId[,c("id"),with=F],weight=predict(model[[i]],data=drvWithId,type='response', progress='text')))[order(weight,decreasing = TRUE)]    
+            suitablity[[i]]<-as.data.table(cbind(drvWithId[,c("id"),with=F],weight=predict(model[[i]],data=drvWithId,type='response', progress='text')))[order(weight,decreasing = TRUE)]    
                 #Here predict is usning the argument to get the probability (response)
         }else if(is.element(model.class[2],"nnet")){
             print("OK NNET")
@@ -271,6 +271,7 @@ constructSuitablity<-function(model,driverForWhichToPredict,dt2=NA,method="NotIn
 }
 
 constructSM<-function(i,model,drvWithId){
+library(data.table)  
 print(paste("Start-SuitablityModeling",i,sep="-"))
 model.class<-class(model[[i]])
         if(is.element(model.class[1],"lm")){
@@ -304,6 +305,7 @@ ParallelconstructSuitablity<-function(model,driverForWhichToPredict,dt2=NA,metho
     suitability=list()
     library(parallel)#library(multicore)
     library(doParallel)
+    numberofClass=length(model)
     if(method=="NotIncludeCurrentClass"){
         drvWithId<-as.data.table(cbind(id=seq(1,dim(driverForWhichToPredict)[1]),TD1=driverForWhichToPredict))
     }else{
@@ -311,14 +313,15 @@ ParallelconstructSuitablity<-function(model,driverForWhichToPredict,dt2=NA,metho
     }
     drvWithId<-drvWithId[rowSums(driverForWhichToPredict,na.rm=TRUE)!=0]
     withCore=detectCores();
-    if( withCore >length(model))
-        withCore=length(model)
+    if( withCore >numberofClass){
+        withCore=numberofClass
+    }
     myCluster=registerDoParallel(core=withCore)
     #for(i in 1:length(model)){
     if(exists("debugValue") && debugValue>=2){      
       print("ParallelconstructSuitablity::constructSM:Called")
     }
-    suitability<-foreach ( i = 1:length(model)) %dopar%{
+    suitability<-foreach ( i = 1:length(model),.export=c("constructSM"),.packages = c("data.table")) %dopar%{
         constructSM(i,model,drvWithId)
     }
     unregister()
@@ -664,7 +667,7 @@ doNeuralFit<-function(dta,currentClassesToFit,currentDriversToChoose,futureClass
             } else {
                 library(parallel)#library(multicore)
                 library(doParallel)
-              myCluster=registerDoParallel(core=withCore)#RegisterDoMC(withCore) #registerDoParallel(c1)
+                myCluster=registerDoParallel(core=withCore)#RegisterDoMC(withCore) #registerDoParallel(c1)
                 model.fit<-foreach ( i = 1:numberofClass) %dopar%{
                     library(nnet)
                     frml<-paste(currentClassesToFit[i],"~", paste(currentDriversToChoose, collapse= "+"))
@@ -1520,6 +1523,7 @@ ComputeNearByWeight<-function(TFile,withNA=NA,wSize=NA){
 }
 
 ComputeNW<-function(i,TFile,withNA=NA,wSize=NA){
+  library(data.table)
   if(exists("debugValue") && debugValue>=2){      
     print("ComputeNW:Entry")
   }
@@ -1570,7 +1574,7 @@ ParallelComputeNearByWeight<-function(TFile,withNA=NA,wSize=NA){
     if(withCore > numberofClass)
         withCore=numberofClass
     myCluster=registerDoParallel(core=withCore)
-    neighbourwt.lst<-foreach ( i = 1:numberofClass) %dopar%{
+    neighbourwt.lst<-foreach ( i = 1:numberofClass,.export=c("ComputeNW",'TFile','withNA','wSize'),.packages = c("raster","data.table")) %dopar%{
         ComputeNW(i,TFile,withNA=withNA,wSize=wSize)
     }
     #registerDoSEQ()
@@ -1636,6 +1640,7 @@ genratePredictedMap<-function(modelType='logistic',T1File,T2File,withClassName=N
       print('genratePredictedMap:getNewTM:Done')
     }
     suit<-ParallelconstructSuitablity(modelfit,driverT2,dT2,method)
+    #suit<-constructSuitablity(modelfit,driverT2,dT2,method)
     if(exists("debugValue") && debugValue>=1 ){
       print(paste("genratePredictedMap:ParallelconstructSuitablity:Done"))
     }
