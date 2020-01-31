@@ -1,4 +1,3 @@
-# Name
  **OpenLDM**
 # Introduction
  The software is called **Open land use land cover Dynamic Modeling Platform** (**OpenLDMP**).This software is developed as an extension of requirements felt for land change analysis and modeling for Indian river basins, at Indian Institute of Remote Sensing ,Dehradun (IIRS) under the ISRO Geosphere Biosphere Program(ISRO-IGBP) project.
@@ -43,6 +42,8 @@ Please make sure to update tests as appropriate.
 
 # Authors
 * Ashutosh Kumar Jha 
- 
+## 
+# Reference
+* Under the review to CAGEO
 ## License
 [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html)
