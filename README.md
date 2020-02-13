@@ -54,7 +54,7 @@ Please make sure to update tests as appropriate.
   commit = {29b942808ea9cd371fca4a0747e1e85452e02181}
 }
 
-## Cite Paper
+## Paper
 * Under Review
 # License
 [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html)
