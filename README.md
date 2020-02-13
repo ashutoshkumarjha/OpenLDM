@@ -43,9 +43,9 @@ Please make sure to update tests as appropriate.
 # Authors
 * Ashutosh Kumar Jha 
 
-# Cite 
-## Software
-  @misc{Jha2020,
+# Citation
+### Software
+@misc{Jha2020,
   author = {Jha, Ashutosh Kumar },
   title = {Open land use land cover Dynamic Modeling Platform (**OpenLDMP**)},
   year = {2020},
@@ -54,8 +54,7 @@ Please make sure to update tests as appropriate.
   howpublished = {\url{https://github.com/ashutoshkumarjha/OpenLDM}},
   commit = {29b942808ea9cd371fca4a0747e1e85452e02181}
 }
-
-## Paper
+### Paper
 * Under Review
 
 # License
