@@ -42,6 +42,7 @@ Please make sure to update tests as appropriate.
 
 # Authors
 * Ashutosh Kumar Jha 
+
 # Cite 
 ## Software
   @misc{Jha2020,
@@ -56,5 +57,6 @@ Please make sure to update tests as appropriate.
 
 ## Paper
 * Under Review
+
 # License
 [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html)
