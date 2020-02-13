@@ -43,7 +43,16 @@ Please make sure to update tests as appropriate.
 # Authors
 * Ashutosh Kumar Jha 
 ## 
-# Reference
+# Cite Software
 * Under the review to CAGEO
+  @misc{Jha2020,
+  author = {Jha, Ashutosh Kumar },
+  title = {Open land use land cover Dynamic Modeling Platform (**OpenLDMP**)},
+  year = {2020},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/ashutoshkumarjha/OpenLDM}},
+  commit = {29b942808ea9cd371fca4a0747e1e85452e02181}
+}
 ## License
 [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html)
