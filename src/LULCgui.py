@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'LULCgui3.5.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.12.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_LULCModel(object):
     def setupUi(self, LULCModel):
         LULCModel.setObjectName("LULCModel")
-        LULCModel.resize(900, 749)
+        LULCModel.resize(1000, 800)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/images/ilulc/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         LULCModel.setWindowIcon(icon)
@@ -204,7 +204,7 @@ class Ui_LULCModel(object):
         self.label_13 = QtWidgets.QLabel(self.tabDataPreparation)
         self.label_13.setAutoFillBackground(True)
         self.label_13.setText("")
-        self.label_13.setPixmap(QtGui.QPixmap(":/images/ilulc/images1.png"))
+        self.label_13.setPixmap(QtGui.QPixmap(":/images/images/icon.png"))
         self.label_13.setScaledContents(True)
         self.label_13.setObjectName("label_13")
         self.gridLayout_33.addWidget(self.label_13, 1, 2, 1, 1)
@@ -662,7 +662,7 @@ class Ui_LULCModel(object):
         self.verticalLayout_2.addWidget(self.progressBar)
         LULCModel.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(LULCModel)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 900, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1005, 22))
         self.menubar.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.menubar.setObjectName("menubar")
         self.menuMenu = QtWidgets.QMenu(self.menubar)
@@ -700,28 +700,28 @@ class Ui_LULCModel(object):
         self.label_7.setText(_translate("LULCModel", "Gridsize: "))
         self.leNAValue_DataPreparationInputSectionProjectSection.setText(_translate("LULCModel", "128"))
         self.gbDataInput.setTitle(_translate("LULCModel", "Data Input"))
-        self.leT0File_DataPreparationInputSectionDataInput.setPlaceholderText(_translate("LULCModel", "input T0.tif or T0.shp "))
+        self.leT0File_DataPreparationInputSectionDataInput.setPlaceholderText(_translate("LULCModel", "input T1.tif or T1.shp "))
         self.pbSelectFileT0File_DataPreparationInputSelectionDataInput.setText(_translate("LULCModel", "Select File"))
-        self.label_3.setText(_translate("LULCModel", "Year (T1):"))
+        self.label_3.setText(_translate("LULCModel", "Year (T2):"))
         self.leT1Year_DataPreparationInputSectionDataInput.setPlaceholderText(_translate("LULCModel", "1995"))
         self.leAreaOfInterest_DataPreparationInputSectionDataInput.setPlaceholderText(_translate("LULCModel", "AOI.tif or AOI.shp"))
         self.leT0Year_DataPreparationInputSectionDataInput.setPlaceholderText(_translate("LULCModel", "1985"))
-        self.label_2.setText(_translate("LULCModel", "T1 File: "))
-        self.label.setText(_translate("LULCModel", "T0 File: "))
+        self.label_2.setText(_translate("LULCModel", "T2 File: "))
+        self.label.setText(_translate("LULCModel", "T1 File: "))
         self.label_24.setText(_translate("LULCModel", "Mask:"))
-        self.label_4.setText(_translate("LULCModel", "Year (T0):"))
+        self.label_4.setText(_translate("LULCModel", "Year (T1):"))
         self.pbConvert_T1_DataPreparationInputSectionDataInput.setText(_translate("LULCModel", "Convert"))
         self.pbSelectFileAreaOfInterest_DataPreparationInputSectionDataInput.setText(_translate("LULCModel", "Select File"))
         self.pbConvert_T0_DataPreparationInputSectionDataInput.setText(_translate("LULCModel", "Convert"))
         self.pbSelectFileT1File_DataPreparationInputSelectionDataInput.setText(_translate("LULCModel", "Select File"))
-        self.leT1File_DataPreparationInputSectionDataInput.setPlaceholderText(_translate("LULCModel", "input T1.tif or T1.shp "))
+        self.leT1File_DataPreparationInputSectionDataInput.setPlaceholderText(_translate("LULCModel", "input T2.tif or T2.shp "))
         self.label_10.setText(_translate("LULCModel", "Area of Interest: "))
         self.leMask_DataPreparationInputSectionDataInput.setPlaceholderText(_translate("LULCModel", "mask.tiff or mask.shp"))
         self.pbSelectFileMask_DataPreparationInputSectionDataInput.setText(_translate("LULCModel", "Select File"))
         self.gbOutputSection.setTitle(_translate("LULCModel", "Output Section"))
         self.leOutputFile_DataPreparationOutputSection.setPlaceholderText(_translate("LULCModel", "Output Raster File.tif"))
         self.pbSelectFileOutputFile_DataPreparationOutputSection.setText(_translate("LULCModel", "Select File"))
-        self.label_9.setText(_translate("LULCModel", "  Output File: "))
+        self.label_9.setText(_translate("LULCModel", "  Output File (Year T3): "))
         self.textBrowser.setHtml(_translate("LULCModel", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -756,7 +756,7 @@ class Ui_LULCModel(object):
         item.setText(_translate("LULCModel", "Select Drivers"))
         item = self.twSelectDrivers_DriverSelectionT0.horizontalHeaderItem(3)
         item.setText(_translate("LULCModel", "Delete Drivers"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDriverSelectionT0), _translate("LULCModel", "Driver Selection (T0)"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDriverSelectionT0), _translate("LULCModel", "Driver Selection (T1)"))
         self.gbViewModelCoefficient_ModelAnalysis.setTitle(_translate("LULCModel", "View Model Coefficient"))
         self.rbLogisiticRegression_ModelAnalysisViewModelCoeeffcient.setText(_translate("LULCModel", "Logistic Regression"))
         self.rbNeuralRegression_ModelAnalysisViewModelCoeeffcient.setText(_translate("LULCModel", "Neural Regression"))
@@ -774,7 +774,7 @@ class Ui_LULCModel(object):
         self.rbIndvidualSelection_DriverSelectionT1SelectModelTypeAndDrivers.setText(_translate("LULCModel", "Individual Selection"))
         self.rbLinearRegression_DriverSelectionT1SelectModelTypeAndDrivers.setText(_translate("LULCModel", "Linear Regression"))
         self.rbRandomForest_DriverSelectionT1SelectModelTypeAndDrivers.setText(_translate("LULCModel", "Random Forest"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDriverSelectionT1), _translate("LULCModel", "Driver Selection (T1)"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDriverSelectionT1), _translate("LULCModel", "Driver Selection (T2)"))
         self.pbExecute_DemandAllocation.setText(_translate("LULCModel", "Execute"))
         self.gbPolicies.setTitle(_translate("LULCModel", "Policies"))
         self.gbSpatialContext.setTitle(_translate("LULCModel", "Spatial Context"))

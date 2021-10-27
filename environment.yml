@@ -9,6 +9,7 @@ dependencies:
   - readline
   - r-base
   - r-rgdal
+  - r-raster
   - gdal
   - pyqt 
   - pip

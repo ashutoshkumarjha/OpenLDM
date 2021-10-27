@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>749</height>
+    <width>1005</width>
+    <height>751</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -156,7 +156,7 @@
                          <string/>
                         </property>
                         <property name="placeholderText">
-                         <string>input T0.tif or T0.shp </string>
+                         <string>input T1.tif or T1.shp </string>
                         </property>
                        </widget>
                       </item>
@@ -170,7 +170,7 @@
                       <item row="1" column="3">
                        <widget class="QLabel" name="label_3">
                         <property name="text">
-                         <string>Year (T1):</string>
+                         <string>Year (T2):</string>
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -219,7 +219,7 @@
                       <item row="1" column="0">
                        <widget class="QLabel" name="label_2">
                         <property name="text">
-                         <string>T1 File: </string>
+                         <string>T2 File: </string>
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -229,7 +229,7 @@
                       <item row="0" column="0">
                        <widget class="QLabel" name="label">
                         <property name="text">
-                         <string>T0 File: </string>
+                         <string>T1 File: </string>
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -249,7 +249,7 @@
                       <item row="0" column="3">
                        <widget class="QLabel" name="label_4">
                         <property name="text">
-                         <string>Year (T0):</string>
+                         <string>Year (T1):</string>
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -299,7 +299,7 @@
                          <string/>
                         </property>
                         <property name="placeholderText">
-                         <string>input T1.tif or T1.shp </string>
+                         <string>input T2.tif or T2.shp </string>
                         </property>
                        </widget>
                       </item>
@@ -367,7 +367,7 @@
                       <item row="0" column="0">
                        <widget class="QLabel" name="label_9">
                         <property name="text">
-                         <string>  Output File: </string>
+                         <string>  Output File (Year T3): </string>
                         </property>
                        </widget>
                       </item>
@@ -432,7 +432,7 @@ p, li { white-space: pre-wrap; }
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap>:/images/ilulc/images1.png</pixmap>
+               <pixmap resource="resources.qrc">:/images/images/icon.png</pixmap>
               </property>
               <property name="scaledContents">
                <bool>true</bool>
@@ -471,7 +471,7 @@ p, li { white-space: pre-wrap; }
           <bool>true</bool>
          </property>
          <attribute name="title">
-          <string>Driver Selection (T0)</string>
+          <string>Driver Selection (T1)</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_24">
           <item row="1" column="0">
@@ -812,7 +812,7 @@ p, li { white-space: pre-wrap; }
         </widget>
         <widget class="QWidget" name="tabDriverSelectionT1">
          <attribute name="title">
-          <string>Driver Selection (T1)</string>
+          <string>Driver Selection (T2)</string>
          </attribute>
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="1" column="0">
@@ -1473,7 +1473,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>900</width>
+     <width>1005</width>
      <height>22</height>
     </rect>
    </property>
