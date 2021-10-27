@@ -1,6 +1,0 @@
-*.pyc
-*~
-examples/outputdata/**
-**/__pycache__/**
-**/*.log
-**/src/*.pdf

@@ -137,8 +137,8 @@ class MyForm(QtWidgets.QMainWindow):
         self.timer.start(1000*1)
 
     def initGui(self):
-        self.setGeometry(50,50,900,600)
-        self.resize(900,600)
+        self.setGeometry(50,50,870,600)
+        #self.resize(870,600)
         self.setWindowTitle("Open-source Land-use Land-cover Dynamics Modeling Platfrom ver-1.0")
         self.ui.leOutputFile_DataPreparationOutputSection.setText("")
         self.ui.twSelectDrivers_DriverSelectionT0.resizeColumnsToContents()
@@ -2008,7 +2008,7 @@ class MyForm(QtWidgets.QMainWindow):
         self.__OutputFile= str(self.ui.leOutputFile_DataPreparationOutputSection.text())
         self.ui.lePredictedFile_AccuracyAssesment.setText(self.__OutputFile)
         
-        
+        self.on_pbNextDataPreparation_clicked()
         
     def filldebugAdddriver(self):
         self.filldebugSelectDriver(1,"../examples/Drivers/commonDrivers/elevation.img")
@@ -2024,35 +2024,17 @@ class MyForm(QtWidgets.QMainWindow):
         disp=self.ui.twSelectDrivers_DriverSelectionT0.cellWidget(row-1, 0)
         (dirName, OnlyFilename) = os.path.split(filename.strip())
         disp.setText(OnlyFilename.replace(".","_"))
-
         
     def filldebug(self):
         self.filldebugInput()
-        self.on_pbNextDataPreparation_clicked()
-
         self.filldebugAdddriver()
         self.fillModelType()
-        self.on_pbViewModelStatistics_DriverSelectionT0DoModelFitting_clicked()
-        self.on_pbNext_DriverSelectionT0_clicked()
-
-        self.fillClassNames()
-        self.on_pbNext_ModelAnalysis_clicked()
-        
         #self.printParameter()
-    
-    def fillClassNames(self):
-        twViewModelCoefficint=self.ui.twViewModelCoefficint_ModelAnalysis 
-        row=twViewModelCoefficint.rowCount()
-        #col=twViewModelCoefficint_ModelAnalysis.columnCount()
-        j=0
-        classnames=['BU','AG','DF','FL','GL','MF','PL','SL','WB']
-        for i in list(range(0, row, 1)):
-            twViewModelCoefficint.item(i,j).setText(classnames[i])
-
+        
     def fillModelType(self):
         self.ui.rbLogisticRegression_DriverSelectionT0DoModelFitting.setChecked(True)
         #self.ui.rbRandomForest_DriverSelectionT0DoModelFitting.setChecked(True)
-        
+        self.on_pbViewModelStatistics_DriverSelectionT0DoModelFitting_clicked()
         
         
     def printParameter(self):
@@ -2081,11 +2063,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     myapp = MyForm()
     myapp.show()
-    myapp.filldebug()   
-    # icon = QtGui.QIcon()
-    # icon.addPixmap(QtGui.QPixmap(":/images/ilulc/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-    # myapp.setWindowIcon(icon)
-    myapp.setWindowIcon(QtGui.QIcon(":/images/ilulc/icon.png"))
+    #myapp.filldebug()   
     r=app.exec_()
     #myapp.statusMessage.exit(0)
     print(r)
