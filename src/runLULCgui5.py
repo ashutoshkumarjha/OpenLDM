@@ -2081,7 +2081,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     myapp = MyForm()
     myapp.show()
-    myapp.filldebug()   
+    #myapp.filldebug()   
     # icon = QtGui.QIcon()
     # icon.addPixmap(QtGui.QPixmap(":/images/ilulc/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
     # myapp.setWindowIcon(icon)
