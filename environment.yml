@@ -10,6 +10,7 @@ dependencies:
   - r-base
   - r-rgdal
   - r-raster
+  - r-data.table
   - gdal
   - pyqt 
   - pip
