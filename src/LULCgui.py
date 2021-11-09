@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_LULCModel(object):
     def setupUi(self, LULCModel):
         LULCModel.setObjectName("LULCModel")
-        LULCModel.resize(1000, 800)
+        LULCModel.resize(1005, 751)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/images/ilulc/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         LULCModel.setWindowIcon(icon)
@@ -734,7 +734,7 @@ class Ui_LULCModel(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">Open-source LULC Dynamics Modeling Platform (OpenLDM)- ver-1.0</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-style:italic;\">Developed for the ISRO-Geosphere Biosphere Programme</span></p></body></html>"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-style:italic;\">Developed under the ISRO-Geosphere Biosphere Programme</span></p></body></html>"))
         self.pbNextDataPreparation.setText(_translate("LULCModel", "Next"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDataPreparation), _translate("LULCModel", "Data Preparation"))
         self.pbNext_DriverSelectionT0.setText(_translate("LULCModel", "Next"))
