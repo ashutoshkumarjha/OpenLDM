@@ -1370,7 +1370,7 @@ rasterise<- function(shpFile,layerName,Gridsize=1000,option="fraction")
 }
 
 kappa <- function(CM) {
-  #Pass the Change Matrix or Transistion Matrix.  
+  #Pass the Change Matrix or Transition Matrix.  
   cmx<-as.matrix(CM)
   #try to convert a vector to a square matrix
   if (ncol(cmx) == 1)
@@ -1439,7 +1439,7 @@ getUnbiasedEstimatePropertionMatrix<-function(cm){
 genratePraportionMatrix<-function(CM){
   
   
-  #Pass the Change Matrix or Transistion Matrix.  
+  #Pass the Change Matrix or Transition Matrix.  
   cmx1<-as.matrix(CM)
   #try to convert a vector to a square matrix
   if (ncol(cmx1) == 1)
@@ -1624,14 +1624,14 @@ kappa.agreementindex <- function(simulationFile,actualFile,baseFile) {
   if(is.na(Ksimulation))Ksimulation=1
   if(is.infinite(Ksimulation))Ksimulation=NA
   
-  #kapp Transistion Correct
-  ktransistion<-(cpmxSAGivenOMax-cpmxSAGivenOTrans)/(1-cpmxSAGivenOTrans)
-  ktransistion[is.na(ktransistion)]=1
-  ktransistion[is.infinite(ktransistion)]=NA
+  #kapp Transition Correct
+  ktransition<-(cpmxSAGivenOMax-cpmxSAGivenOTrans)/(1-cpmxSAGivenOTrans)
+  ktransition[is.na(ktransition)]=1
+  ktransition[is.infinite(ktransition)]=NA
 
-  Ktransistion<-(pmxSAGivenOMax-pmxSAGivenOTrans)/(1-pmxSAGivenOTrans)
-  if(is.na(Ktransistion))Ktransistion=1
-  if(is.infinite(Ktransistion))Ktransistion=NA
+  Ktransition<-(pmxSAGivenOMax-pmxSAGivenOTrans)/(1-pmxSAGivenOTrans)
+  if(is.na(Ktransition))Ktransition=1
+  if(is.infinite(Ktransition))Ktransition=NA
 
   #kapp Translocation Correct
   ktranslocation<-(cehatmqml-cpmxSAGivenOTrans)/(cpmxSAGivenOMax-cpmxSAGivenOTrans)
@@ -1649,7 +1649,7 @@ kappa.agreementindex <- function(simulationFile,actualFile,baseFile) {
          kstandard.classwise=kstandard,kstandard.overall=Kstandard,kno.classwise=kno,kno.overall=Kno, 
          klocation.classwise=klocation,klocation.overall=Klocation,kallocation.classwise=kallocation,kallocation.overall=Kallocation,
          khistogram.classwise=khistogram, khistogram.overall=Khistogram,kquantity.classwise=kquantity,kquantity.overall=Kquantity,
-         ksimulation.classwise=ksimulation, ksimulation.overall=Ksimulation, ktransistion.classwise=ktransistion, ktransistion.overall=Ktransistion,
+         ksimulation.classwise=ksimulation, ksimulation.overall=Ksimulation, ktransition.classwise=ktransition, ktransition.overall=Ktransition,
          ktranslocation.classwise=ktranslocation,ktranslocation.overall=Ktranslocation, 
          allocationdisagreemnt.overall=A,allocationagreemnt.overall=C,shift.overall=S, 
          exchange.overall=E, quantitydisagreemnt.overall=Q,cumulativedisagreemnt.overall=D,
@@ -1672,7 +1672,7 @@ summary.kappa.agreementindex<-function(kappaindex,namesLC=NA){
   names(kappaindex$khistogram.classwise)<-namesLC
   names(kappaindex$kquantity.classwise)<-namesLC
   names(kappaindex$ksimulation.classwise)<-namesLC
-  names(kappaindex$ktransistion.classwise)<-namesLC
+  names(kappaindex$ktransition.classwise)<-namesLC
   names(kappaindex$ktranslocation.classwise)<-namesLC
   names(kappaindex$allocationdisagreemnt.classwise)<-namesLC
   names(kappaindex$allocationagreemnt.classwise)<-namesLC
@@ -1721,8 +1721,8 @@ summary.kappa.agreementindex<-function(kappaindex,namesLC=NA){
   print(round(kappaindex$kquantity.overall,7));
   print("Overall-ksimulation:", quote=F); 
   print(round(kappaindex$ksimulation.overall,7));
-  print("Overall-ktransistion:", quote=F); 
-  print(round(kappaindex$ktransistion.overall,7));
+  print("Overall-ktransition:", quote=F); 
+  print(round(kappaindex$ktransition.overall,7));
   print("Overall-ktranslocation:", quote=F); 
   print(round(kappaindex$ktranslocation.overall,7));
   ##################Overall-Stop####################
@@ -1740,8 +1740,8 @@ summary.kappa.agreementindex<-function(kappaindex,namesLC=NA){
   print(round(kappaindex$kquantity.classwise,7));
   print("classwise-ksimulation:", quote=F); 
   print(round(kappaindex$ksimulation.classwise,7));
-  print("classwise-ktransistion:", quote=F); 
-  print(round(kappaindex$ktransistion.classwise,7));
+  print("classwise-ktransition:", quote=F); 
+  print(round(kappaindex$ktransition.classwise,7));
   print("classwise-ktranslocation:", quote=F); 
   print(round(kappaindex$ktranslocation.classwise,7));
   ##################Calsswise-Ends###################
@@ -1760,7 +1760,7 @@ summary.kappa.agreementindex.tabel<-function(kappaindex,namesLC=NA){
   names(kappaindex$khistogram.classwise)<-namesLC
   names(kappaindex$kquantity.classwise)<-namesLC
   names(kappaindex$ksimulation.classwise)<-namesLC
-  names(kappaindex$ktransistion.classwise)<-namesLC
+  names(kappaindex$ktransition.classwise)<-namesLC
   names(kappaindex$ktranslocation.classwise)<-namesLC
   names(kappaindex$allocationdisagreemnt.classwise)<-namesLC
   names(kappaindex$allocationagreemnt.classwise)<-namesLC
@@ -1771,11 +1771,11 @@ summary.kappa.agreementindex.tabel<-function(kappaindex,namesLC=NA){
   rownames(kappaindex$propertionmatrix)<-namesLC
   colnames(kappaindex$propertionmatrix)<-namesLC
   
-  metric<-c("Kstandard","Kno","Kallocation","Khistogram","Kquantity","Ksimulation","Ktransistion","Ktranslocation")
+  metric<-c("Kstandard","Kno","Kallocation","Khistogram","Kquantity","Ksimulation","Ktransition","Ktranslocation")
   consolidate.overall<-c(kappaindex$kstandard.overall,kappaindex$kno.overall,
                          kappaindex$kallocation.overall,kappaindex$khistogram.overall,
                          kappaindex$kquantity.overall,kappaindex$ksimulation.overall,
-                         kappaindex$ktransistion.overall,kappaindex$ktranslocation.overall)
+                         kappaindex$ktransition.overall,kappaindex$ktranslocation.overall)
   
   #consolidate.overall<-matrix(consolidate.overall,ncol = 1)
   consolidate.overall<-cbind(Kappa=round(consolidate.overall,7),"Kappa Type"=metric)
@@ -1788,7 +1788,7 @@ summary.kappa.agreementindex.tabel<-function(kappaindex,namesLC=NA){
         cbind(Kappa=round(kappaindex$khistogram.classwise,7),"Kappa Type"=rep("Khistogram",kappaindex$noOfClass)),
         cbind(Kappa=round(kappaindex$kquantity.classwise,7),"Kappa Type"=rep("Kquantity",kappaindex$noOfClass)),
         cbind(Kappa=round(kappaindex$ksimulation.classwise,7),"Kappa Type"=rep("Ksimulation",kappaindex$noOfClass)),
-        cbind(Kappa=round(kappaindex$ktransistion.classwise,7),"Kappa Type"=rep("Ktransistion",kappaindex$noOfClass)),
+        cbind(Kappa=round(kappaindex$ktransition.classwise,7),"Kappa Type"=rep("Ktransition",kappaindex$noOfClass)),
         cbind(Kappa=round(kappaindex$ktranslocation.classwise,7),"Kappa Type"=rep("Ktranslocation",kappaindex$noOfClass))
   )
   return(consolidate.overall)
