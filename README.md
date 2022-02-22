@@ -62,7 +62,7 @@ Please make sure to update tests as appropriate.
    journal = {Journal of the Indian Society of Remote Sensing},
    month = {2},
    title = {OpenLDM: Open-Source Land-Use and Land-Cover Dynamics Modeling Platform},
-   url = {https://link.springer.com/10.1007/s12524-022-01516-9},
+   url = { https://link.springer.com/10.1007/s12524-022-01516-9 },
    year = {2022},
 }
 
