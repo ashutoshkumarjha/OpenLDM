@@ -55,7 +55,16 @@ Please make sure to update tests as appropriate.
   commit = {29b942808ea9cd371fca4a0747e1e85452e02181}
 }
 ### Paper
-* Under Review
+@article{Jha2022,
+   author = {Ashutosh Kumar Jha and S. K. Ghosh and S. K. Srivastav and Sameer Saran},
+   doi = {10.1007/s12524-022-01516-9},
+   issn = {0255-660X},
+   journal = {Journal of the Indian Society of Remote Sensing},
+   month = {2},
+   title = {OpenLDM: Open-Source Land-Use and Land-Cover Dynamics Modeling Platform},
+   url = {https://link.springer.com/10.1007/s12524-022-01516-9},
+   year = {2022},
+}
 
 # License
 [GPL](https://www.gnu.org/licenses/gpl-3.0.en.html)
