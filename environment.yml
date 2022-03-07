@@ -6,7 +6,6 @@ channels:
 dependencies:
   - ca-certificates
   - python
-  - readline
   - r-base
   - r-rgdal
   - r-raster
