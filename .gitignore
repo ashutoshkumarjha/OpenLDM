@@ -1,6 +1,7 @@
 *.pyc
 *~
-examples/outputdata/**
+*DS_Store
+examples/outputdata/*.tif
 **/__pycache__/**
 **/*.log
 **/src/*.pdf
