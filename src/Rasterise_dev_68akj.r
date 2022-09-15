@@ -421,7 +421,7 @@ constructSuitablity<-function(model,driverForWhichToPredict,dt2=NA,method="NotIn
 
 constructSM<-function(i,model,drvWithId){
   library(data.table)  
-  print(paste("Start-SuitablityModeling",i,sep="-"))
+  print(paste("Start-constructSM",i,sep="-"))
   model.class<-class(model[[i]])
   if(is.element(model.class[1],"lm")){
     print("OK LM")
@@ -436,6 +436,11 @@ constructSM<-function(i,model,drvWithId){
   }else if(is.element(model.class[2],"randomForest")){
     print("OK RF")
     predictedValue=predict(model[[i]],newdata=drvWithId,type='prob', progress='text')[,2] #Second column probablity 
+    suitablity<-as.data.table(cbind(drvWithId[,c("id"),with=F],weight=predictedValue))[order(weight,decreasing = TRUE)]    
+  }else if(is.element(model.class[2],"svm")){
+    print("OK SVM")
+    predictedValue=predict(model[[i]],newdata=drvWithId,probability = TRUE)
+    predictedValue=attr(predictedValue, "probabilities")[,2] #Second column probablity of presence
     suitablity<-as.data.table(cbind(drvWithId[,c("id"),with=F],weight=predictedValue))[order(weight,decreasing = TRUE)]    
   }else{
     print("Error in modeling")
@@ -850,6 +855,61 @@ doNeuralFit<-function(dta,currentClassesToFit,currentDriversToChoose,futureClass
   return(model.fit)
 }
 
+doSVMFit<-function(dta,currentClassesToFit,currentDriversToChoose,futureClassesToChoose,method="NotIncludeCurrentClass"){
+  
+  #library(neuralnet)
+  library(e1071)
+  withCore=1#detectCores();
+  numberofClass=length(currentClassesToFit)
+  numberofDrivers=length(currentDriversToChoose)
+  model.fit=list()
+  if(method=="NotIncludeCurrentClass"){
+    dta[is.na(dta)]<-0 #Replace non allocated grid for particular class to indicate absent
+    if(withCore==1){
+      for( i in 1:numberofClass){
+        library(e1071)
+        frml<-paste(currentClassesToFit[i],"~", paste(currentDriversToChoose, collapse= "+"))
+        #model.fit[[i]]=neuralnet(as.formula(frml),data = dta, hidden=numberofDrivers+numberofClass,err.fct="sse",algorithm="backprop" ,learningrate=0.01, linear.output=FALSE,likelihood=T)
+        model.fit[[i]]<-svm(as.formula(frml),data = dta,probability=TRUE)
+      }
+    } else {
+      library(parallel)#library(multicore)
+      library(doParallel)
+      myCluster=registerDoParallel(core=withCore)#RegisterDoMC(withCore) #registerDoParallel(c1)
+      model.fit<-foreach ( i = 1:numberofClass) %dopar%{
+        library(e1071)
+        frml<-paste(currentClassesToFit[i],"~", paste(currentDriversToChoose, collapse= "+"))
+        #neuralnet(as.formula(frml),data = dta, hidden=numberofDrivers+numberofClass,err.fct="sse",algorithm="backprop" ,learningrate=0.01, linear.output=FALSE,likelihood=T)
+        svm(as.formula(frml),data = dta,,probability=TRUE)
+      }
+      unregister()
+      #stopCluster(myCluster)
+    }
+  }else{
+    dta[is.na(dta)]<-0  #Replace non allocated grid for particular class to indicate absent
+    if(withCore==1){
+      for( i in 1:numberofClass){
+        frml<-paste(futureClassesToChoose[i],"~", paste(paste(currentClassesToFit,collapse= "+"),paste(currentDriversToChoose, collapse= "+"), sep= "+"))
+        
+        #model.fit[[i]]=neuralnet(as.formula(frml),data = dta, hidden=numberofDrivers+numberofClass,err.fct="sse",algorithm="backprop" ,learningrate=0.01, linear.output=FALSE,likelihood=T)
+        model.fit[[i]]<-svm(as.formula(frml),data = dta)
+      }
+    } else {
+      myCluster=registerDoParallel(core=withCore)#RegisterDoMC(withCore) #registerDoParallel(c1)
+      model.fit<-foreach ( i = 1:numberofClass) %dopar%{
+        frml<-paste(futureClassesToChoose[i],"~", paste(paste(currentClassesToFit,collapse= "+"),paste(currentDriversToChoose, collapse= "+"), sep= "+"))
+        #neuralnet(as.formula(frml),data = dta, hidden=numberofDrivers+numberofClass,err.fct="sse",algorithm="backprop" ,learningrate=0.01, linear.output=FALSE,likelihood=T)
+        svm(as.formula(frml),data = dta,probability=TRUE)
+      }
+      unregister()
+      #stopCluster(myCluster)
+    }
+  }
+  names(model.fit)<-currentClassesToFit
+  return(model.fit)
+}
+
+
 # doNeuralFit<-function(dta,classToFit,driversToChoose,dt2,method="Change")
 # {
 # numberofRows=dim(dta)[1]
@@ -927,6 +987,8 @@ fitSameModelToAll<-function(dt1,drvt1,dt2,modelType='regression',method="NotIncl
     model.fit<-doNeuralFit(dta,currentClassesToFit,driversToChoose,futureClassesToFit,method)
   } else if (modelType=="randomForest") {
     model.fit<-doRandomFit(dta,currentClassesToFit,driversToChoose,futureClassesToFit,method)
+  }  else if (modelType=="svm") {
+    model.fit<-doSVMFit(dta,currentClassesToFit,driversToChoose,futureClassesToFit,method)
   } else {
     model.fit<-doLinearFit(dta,currentClassesToFit,driversToChoose,method)
   }
@@ -991,6 +1053,15 @@ fitModelSeparately<-function(dt1,drvt1,dt2,modelType,method="NotIncludeCurrentCl
           #model.fit[[i]]<-randomForest(as.formula(frml), data = dta, nodesize=1,na.action=na.omit,importance=TRUE,type="classification")
           model.fit[[i]]<-randomForest(as.formula(frml), data = dta, na.action=na.omit,importance=TRUE,type="regression")
           #print(model.fit[[i]])                    
+        }else if(modelType[i]=="svm"){
+          print("fitModelSeparately:SerialSVM")
+          library(e1071)
+          cols<-trim(gsub('(.*)~(.*)','\\1',frml))
+          frml<-gsub('(.*)~(.*)','factor(\\1)~\\2',frml)
+          dta[, (cols) := lapply(.SD, factor), .SDcols = cols]
+          #svm(as.formula(frml), data = dta, nodesize=1,na.action=na.omit,proximity=TRUE,importance=TRUE,type="classification")
+          print(frml)
+          model.fit[[i]]<-svm(as.formula(frml), data = dta,probability=TRUE)
         }
       }
     } else {
@@ -1020,17 +1091,28 @@ fitModelSeparately<-function(dt1,drvt1,dt2,modelType,method="NotIncludeCurrentCl
           frml<-gsub('(.*)~(.*)','factor(\\1)~\\2',frml)
           dta[, (cols) := lapply(.SD, factor), .SDcols = cols]
           randomForest(as.formula(frml), data = dta, nodesize=1,na.action=na.omit,proximity=TRUE,importance=TRUE,type="classification")
+        }else if(modelType[i]=="svm"){
+          print("fitModelSeparately:ParallelSVM")
+          library(e1071)
+          cols<-trim(gsub('(.*)~(.*)','\\1',frml))
+          frml<-gsub('(.*)~(.*)','factor(\\1)~\\2',frml)
+          dta[, (cols) := lapply(.SD, factor), .SDcols = cols]
+          #svm(as.formula(frml), data = dta, nodesize=1,na.action=na.omit,proximity=TRUE,importance=TRUE,type="classification")
+          svm(as.formula(frml), data = dta,probability=TRUE)
         }
       }
       unregister()
       #stopCluster(myCluster)
     }
   }else{
-    
+    print("fitModelSeparately:No Model Exists yet")
+    abort("fitModelSeparately:No Model Exists yet")
   } 
   if(exists("debugValue") && debugValue>=1 ){ 
     print("fitModelSeparately:Done");
   }
+  print("1111:fitModelSeparately")
+  print(currentClassesToFit)
   names(model.fit)<-currentClassesToFit
   return(model.fit)
 }
@@ -2048,6 +2130,7 @@ ComputeNW<-function(i,TFile,withNA=NA,wSize=NA){
 }
 
 ParallelComputeNearByWeight<-function(TFile,withNA=NA,wSize=NA){
+
   if(exists("debugValue") && debugValue>=2){      
     print("ParallelComputeNearByWeight:Entry")
   }
@@ -2064,12 +2147,18 @@ ParallelComputeNearByWeight<-function(TFile,withNA=NA,wSize=NA){
   
   tbl<-as.matrix(levels(tmp)[[1]])
   numberofClass=length(tbl)
+  neighbourwt.lst=list()
   library(parallel)#library(multicore)
   library(doParallel)
   withCore=detectCores()
-  if(withCore > numberofClass)
+  if(withCore > numberofClass){
     withCore=numberofClass
+  }
   myCluster=registerDoParallel(core=withCore)
+  if(exists("debugValue") && debugValue>=2){      
+    print("ParallelComputeNearByWeight:ComputeNW:Called")
+  }
+  
   neighbourwt.lst<-foreach ( i = 1:numberofClass,.export=c("ComputeNW",'TFile','withNA','wSize'),.packages = c("raster","data.table")) %dopar%{
     ComputeNW(i,TFile,withNA=withNA,wSize=wSize)
   }

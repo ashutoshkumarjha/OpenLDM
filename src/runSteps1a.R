@@ -1,7 +1,8 @@
 rm(list=ls())
+setwd('/Users/ashutosh/Documents/GitHub/OpenLDM/src')
 source('../src/Rasterise_dev_68akj.r')
 debugValue=0
-pkglist=c('data.table','raster','maptools','parallel','doParallel','nnet','maptools','rgeos','rgdal','randomForest','expm','Matrix','png')
+pkglist=c('data.table','raster','maptools','parallel','doParallel','nnet','maptools','rgeos','rgdal','randomForest','expm','Matrix','png','e1071')
 CheckInstallPackage(pkglist)
 T1File="../examples/LULC/1985.tif"
 #raster(T1File) ;#sum(!is.na(raster(T1File)[]),na.rm=TRUE) #Data Connsitency Check
@@ -64,7 +65,8 @@ myallocationorder<-c(1,3,4,5,9,6,7,8,2)
 #model.type=c('randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','randomForest')
 #model.type=c('regression','regression','regression','regression','regression','regression','regression','regression','regression')
 #model.type=c('nnet','nnet','nnet','nnet','nnet','nnet','nnet','nnet','nnet')
-model.type=c('randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','logistic','randomForest','logistic')
+#model.type=c('randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','logistic','randomForest','logistic')
+model.type=c('svm','svm','svm','svm','svm','svm','svm','svm','svm')
 
 ###############
 model.formula=c("T1.BuildUp ~ TD1.DistanceToDrainage+TD1.DistanceToBuiltup+TD1.DistanceToRoad+TD1.Elevation",
@@ -93,7 +95,7 @@ myconversion<-matrix(
   ,nrow=length(myallocationorder),byrow=TRUE)
 myconversion='TP'
 
-getModelFitSummary(T1File,T2File,T1drivers,modelType='randomForest',withNAvalue=na.value,method="NotIncludeCurrentClass")
+#getModelFitSummary(T1File,T2File,T1drivers,modelType='svm',withNAvalue=na.value,method="NotIncludeCurrentClass")
 ####nw<-ParallelComputeNearByWeight(T2File,withNA=na.value)
 ####createNeighbourMap(nw,T2File,suitabilityDirectory,clsName)
 #plot(stack(paste(rep(suitabilityDirectory,length(clsName)),paste(clsName,"NW.tif",sep=""),sep="")))

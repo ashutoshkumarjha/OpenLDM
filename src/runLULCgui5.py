@@ -1023,7 +1023,7 @@ class MyForm(QtWidgets.QMainWindow):
         '"+self.__installedDir+"/Rasterise_dev_68akj.r'
         pk.write("rm(list=ls())\nlibrary(raster)\n")
         pk.write("source('"+self.__installedDir+"/Rasterise_dev_68akj.r')\n")
-        pk.write("pkglist=c('data.table','raster','maptools','parallel','doParallel','nnet','maptools','rgeos','rgdal','randomForest','expm','Matrix')\nCheckInstallPackage(pkglist)\n")
+        pk.write("pkglist=c('data.table','raster','maptools','parallel','doParallel','nnet','maptools','rgeos','rgdal','randomForest','expm','Matrix','png','e1071')\nCheckInstallPackage(pkglist)\n")
         pk.write("ProjectDirectory=\"%s\"\n" %(str(self.__projectDirectory)))
         if (self.__AOIFile!=R.NA_Logical):
             pk.write("AOIFile=\"%s\"\n"%(str(self.__AOIFile)))
