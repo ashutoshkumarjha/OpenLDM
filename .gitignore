@@ -5,3 +5,4 @@ examples/outputdata/*.tif
 **/__pycache__/**
 **/*.log
 **/src/*.pdf
+src/.Rapp.history

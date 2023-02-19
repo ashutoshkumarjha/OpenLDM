@@ -10,8 +10,10 @@ dependencies:
   - r-rgdal
   - r-raster
   - r-data.table
+  - r-maptools
   - gdal
-  - pyqt 
+  - pyqt
+  - pyqtwebengine  
   - pip
   - pip:
     - rpy2

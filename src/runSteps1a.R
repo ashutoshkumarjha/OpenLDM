@@ -1,5 +1,4 @@
 rm(list=ls())
-setwd('/Users/ashutosh/Documents/GitHub/OpenLDM/src')
 source('../src/Rasterise_dev_68akj.r')
 debugValue=0
 pkglist=c('data.table','raster','maptools','parallel','doParallel','nnet','maptools','rgeos','rgdal','randomForest','expm','Matrix','png','e1071')

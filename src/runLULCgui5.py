@@ -1,5 +1,5 @@
 #python 3.5.2
-import sys, os, random, time, re,imp
+import sys, os, random, time, re #,imp
 import shutil,tempfile
 import os.path
 from os.path import basename, splitext
@@ -1944,7 +1944,7 @@ class MyForm(QtWidgets.QMainWindow):
         self.rcode="source('"+self.__installedDir+"/Rasterise_dev_68akj.r')"
         R.r(self.rcode)
         #libs=["png","grid","raster","maptools","rgeos","rgdal","parallel","doParallel","nnet","data.table"]
-        libs=['data.table','raster','maptools','parallel','doParallel','nnet','maptools','rgeos','rgdal','randomForest','expm','Matrix','png']
+        libs=['data.table','raster','randomForest','parallel','doParallel','nnet','maptools','rgeos','rgdal','randomForest','expm','Matrix','png']
         CheckInstallPackage = R.r['CheckInstallPackage']
         #code="packages="+libs
         CheckInstallPackage(libs)
@@ -1982,7 +1982,8 @@ class MyForm(QtWidgets.QMainWindow):
     def main_is_frozen(self):
         return (hasattr(sys, "frozen") or # new py2exe
                     hasattr(sys, "importers") # old py2exe
-                    or imp.is_frozen("__main__")) # tools/freeze
+                    #or imp.is_frozen("__main__")
+                    ) # tools/freeze
 
     def get_main_dir(self):
         if self.main_is_frozen():

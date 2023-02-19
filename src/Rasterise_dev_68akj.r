@@ -490,7 +490,7 @@ getMasked<-function(rasterFile,maskFile=NA,aoiFile=NA)
 {
   #rm(list=ls())
   library(raster)
-  library(maptools)
+  #library(maptools)
   if(exists("debugValue") && debugValue>=2){      
     print("getMasked:Entry");
   }
@@ -1389,7 +1389,9 @@ createMutliRaster<-function(classCode,inputRaster,inputDataTable)
 
 
 rasterise<- function(shpFile,layerName,Gridsize=1000,option="fraction")
-{    library(maptools);library(rgeos);library(rgdal);library(raster);library(data.table)
+{    
+  #library(maptools);
+  library(rgeos);library(rgdal);library(raster);library(data.table)
   #library(rgdal) # Loads SP package by default
   #Debug
   inputShape<-readOGR(shpFile, layerName) # Creates a SpatialPolygonsDataFrame class (sp)

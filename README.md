@@ -14,16 +14,19 @@
  2. Follow the [instruction](http://docs.anaconda.com/anaconda/install)  to install
  3. Create a anaconda envrionment using the command 
  ```bash
-   conda env create -f environment.yml
+   conda env create -n OpenLDM -f environment.yml
  ```
-## Testing
+## Testing successful Installation
 ### Command Line 
 ```bash
+   conda activate OpenLDM
    cd src
    R -f runSteps1a.R
  ```
- On Successfull excution predicted file (_Test-neighwithNA-allocNA-134596782-randomForest-2005-re.tif_) in _output_ direcory would be generated.There will be also some other files with suffix _SM.tif_ also representing the suitability map for each class.
-### Command Line 
+ On Successfull excution predicted file (_Test-neighwithNA-allocNA-134596782-randomForest-2005-re.tif_) in _output_ direcory would be generated.There will be also some other files with suffix _SM.tif_ and _NW.tif_ also representing the suitability map and neighbourhood file for each class.
+
+## Using own Data for Model
+### Command Line
 For command line change the runSteps1a.R based on the new data sets and modeling conditions. Make sure to enable the _data consistency check_ line.Use the following command
 ```bash
    cd src
