@@ -2476,7 +2476,7 @@ copyright.draw <- function(label,  x, y, size, ...) {
 
 #
 #type=getOption("pkgType")                           
-CheckInstallPackage <- function(packages, repos="http://cran.r-project.org",
+CheckInstallPackage <- function(packages, repos="https://cran.r-project.org",
                                 depend=c("Depends", "Imports", "LinkingTo", "Suggests", "Enhances"), ...) {
   installed=as.data.frame(installed.packages())
   for(p in packages) {

@@ -3,33 +3,33 @@ source('../src/Rasterise_dev_68akj.r')
 debugValue=0
 pkglist=c('data.table','raster','maptools','parallel','doParallel','nnet','maptools','rgeos','rgdal','randomForest','expm','Matrix','png','e1071')
 CheckInstallPackage(pkglist)
-T1File="../examples/LULC/1985.tif"
+T1File="../example/LULC/1985.tif"
 #raster(T1File) ;#sum(!is.na(raster(T1File)[]),na.rm=TRUE) #Data Connsitency Check
-T2File="../examples/LULC/1995.tif";
+T2File="../example/LULC/1995.tif";
 #raster(T2File) ;#sum(!is.na(raster(T2File)[]),na.rm=TRUE) #Data Connsitency Check
-T3File="../examples/LULC/2005.tif";
+T3File="../example/LULC/2005.tif";
 #raster(T3File) ;#sum(!is.na(raster(T3File)[]),na.rm=TRUE) #Data Connsitency Check
-#PredictedFile="../examples/outputdata/senario-4-neighwith3-allocorder-134596782-demand-as2005-randomForest-2005.tif";
-#PredictedFile="../examples/outputdata/senario-6-neighwithNA-allocNA-134596782-randomForest-2005-re.tif";
-#PredictedFile="../examples/outputdata/senario-3-neighwithNA-allocorder-134596782-demand-as2005-randomForest-2005.tif";
-#PredictedFile="../examples/outputdata/senario-2-neighwith3-allocorder-134596782-demand-businessAsUsual-logistics-2005.tif";
-#PredictedFile="../examples/outputdata/senario-1-neighwithNA-allocorder-134596782-demand-businessAsUsual-logistics-2005.tif";
-PredictedFile="../examples/outputdata/senario-5-neighwith3-allocorder-134596782-demand-as2005-mixregression-rrrrrrlrl-2005.tif";
+#PredictedFile="../example/outputdata/senario-4-neighwith3-allocorder-134596782-demand-as2005-randomForest-2005.tif";
+#PredictedFile="../example/outputdata/senario-6-neighwithNA-allocNA-134596782-randomForest-2005-re.tif";
+#PredictedFile="../example/outputdata/senario-3-neighwithNA-allocorder-134596782-demand-as2005-randomForest-2005.tif";
+#PredictedFile="../example/outputdata/senario-2-neighwith3-allocorder-134596782-demand-businessAsUsual-logistics-2005.tif";
+#PredictedFile="../example/outputdata/senario-1-neighwithNA-allocorder-134596782-demand-businessAsUsual-logistics-2005.tif";
+PredictedFile="../example/outputdata/senario-5-neighwith3-allocorder-134596782-demand-as2005-mixregression-rrrrrrlrl-2005.tif";
 #raster(PredictedFile) ;#sum(!is.na(raster(PredictedFile)[]),na.rm=TRUE)
 #PredictedFile="../outputdata/Test-neighwithNA-allocNA-134596782-randomForest-2005-re.tif";
 
 drvs85<-c(
-DistanceToDrainage="../examples/Drivers/drivers_85/dist_stream.img",
-DistanceToBuiltup="../examples/Drivers/drivers_85/Dist_urban.img",
-DistanceToRoad="../examples/Drivers/drivers_85/road_final.img",
-Elevation="../examples/Drivers/commonDrivers/elevation.img"
+DistanceToDrainage="../example/Drivers/drivers_85/dist_stream.img",
+DistanceToBuiltup="../example/Drivers/drivers_85/Dist_urban.img",
+DistanceToRoad="../example/Drivers/drivers_85/road_final.img",
+Elevation="../example/Drivers/commonDrivers/elevation.img"
 )
 #stack(drvs85) ;sum(!is.na(stack(drvs85)[]),na.rm=TRUE) #Detail Data Connsitency Check
 drvs95<-c(
-DistanceToDrainage="../examples/Drivers/drivers_95/dist_stream.img",
-DistanceToBuiltup="../examples/Drivers/drivers_95/Dist_urban.img",
-DistanceToRoad="../examples/Drivers/drivers_95/road_final.img",
-Elevation="../examples/Drivers/commonDrivers/elevation.img"
+DistanceToDrainage="../example/Drivers/drivers_95/dist_stream.img",
+DistanceToBuiltup="../example/Drivers/drivers_95/Dist_urban.img",
+DistanceToRoad="../example/Drivers/drivers_95/road_final.img",
+Elevation="../example/Drivers/commonDrivers/elevation.img"
 )
 ##stack(drvs95) ;sum(!is.na(stack(drvs95)[]),na.rm=TRUE) #Detail Data Connsitency Check
 T1drivers=drvs85
@@ -60,12 +60,12 @@ myallocationorder=NA
 #mydemand=NA
 #neighbourl=NA
 myallocationorder<-c(1,3,4,5,9,6,7,8,2)
-#model.type=c('logistic','logistic','logistic','logistic','logistic','logistic','logistic','logistic','logistic')
+model.type=c('logistic','logistic','logistic','logistic','logistic','logistic','logistic','logistic','logistic')
 #model.type=c('randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','randomForest')
 #model.type=c('regression','regression','regression','regression','regression','regression','regression','regression','regression')
 #model.type=c('nnet','nnet','nnet','nnet','nnet','nnet','nnet','nnet','nnet')
 #model.type=c('randomForest','randomForest','randomForest','randomForest','randomForest','randomForest','logistic','randomForest','logistic')
-model.type=c('svm','svm','svm','svm','svm','svm','svm','svm','svm')
+#model.type=c('svm','svm','svm','svm','svm','svm','svm','svm','svm')
 
 ###############
 model.formula=c("T1.BuildUp ~ TD1.DistanceToDrainage+TD1.DistanceToBuiltup+TD1.DistanceToRoad+TD1.Elevation",
@@ -79,7 +79,7 @@ model.formula=c("T1.BuildUp ~ TD1.DistanceToDrainage+TD1.DistanceToBuiltup+TD1.D
                   "T1.WaterBody ~ TD1.DistanceToDrainage+TD1.DistanceToBuiltup+TD1.DistanceToRoad+TD1.Elevation")
 #model.formula=NA
 
-suitabilityDirectory='../examples/outputdata/'
+suitabilityDirectory='../example/outputdata/'
 myconversion<-matrix(
   c(1,5,3,2,4,6,7,8,9,
     2,1,4,3,5,6,7,8,9,
@@ -124,11 +124,11 @@ getKappaSummary(T3File,PredictedFile,na.value,clsName)
 #st<-stack(T3File,PredictedFile);plot(st)
 #colSums(!is.na(stack(c(drvs85,drvs95,T1File,T3File,PredictedFile))[]),na.rm=TRUE)/sum(!is.na(raster(T2File)[]),na.rm=TRUE)
 
-#s<-stack("../examples/LULC/2005.tif","../examples/outputdata/senario-4-neigh-allocorder-124596783-randomForest-2005.tif") 
-#s<-stack("../examples/LULC/2005.tif","../examples/outputdata/senario-4-neigh-allocorder-134596782-randomForest-2005.tif")
-#s<-stack("../examples/outputdata/senario-4-neigh-allocorder-124596783-randomForest-2005.tif","../examples/outputdata/senario-4-neigh-allocorder-134596782-randomForest-2005.tif")
+#s<-stack("../example/LULC/2005.tif","../example/outputdata/senario-4-neigh-allocorder-124596783-randomForest-2005.tif") 
+#s<-stack("../example/LULC/2005.tif","../example/outputdata/senario-4-neigh-allocorder-134596782-randomForest-2005.tif")
+#s<-stack("../example/outputdata/senario-4-neigh-allocorder-124596783-randomForest-2005.tif","../example/outputdata/senario-4-neigh-allocorder-134596782-randomForest-2005.tif")
 
-#s<-stack("../examples/outputdata/senario-4-neigh-randomForest-2005.tif","../examples/outputdata/Senario-3.tif") 
+#s<-stack("../example/outputdata/senario-4-neigh-randomForest-2005.tif","../example/outputdata/Senario-3.tif") 
 s<-stack(T3File,PredictedFile)
 
 #plot(s)
