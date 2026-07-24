@@ -5,15 +5,18 @@ channels:
   - defaults
 dependencies:
   - ca-certificates
+  - libgdal
+  - proj
+  - geos
   - python
   - r-base
   - r-rgdal
   - r-raster
   - r-data.table
   - r-maptools
-  - gdal
-  - pyqt
-  - pyqtwebengine  
+  - gdal>=3.4.0
+  - pyqt>=5.15.0
+  - pyqtwebengine>=5.15.0 
   - pip
   - pip:
     - rpy2
